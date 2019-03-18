@@ -1,0 +1,21 @@
+{% extends "layout-old.html" %}
+
+{% block pageTitle %}
+  Big form using the new GDS design system - Service name
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="#">
+        <div class="form-group">
+          <h1 class="heading-xlarge">
+            <label class="" for="text-input-2">Text input 2</label>
+          </h1>
+          <input class="form-control" id="text-input-2" type="text" name="text-input-2">
+        </div>
+        <button class="button" type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "layout-old.html" %}
+
+{% block pageTitle %}
+  Big form using the new GDS design system - Service name
+{% endblock %}
+
+{% block content %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="error-summary" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+          Message to alert the user to a problem goes here
+        </h2>
+
+        <p>
+          Optional description of the errors and how to correct them
+        </p>
+
+        <ul class="error-summary-list">
+          <li><a href="#text-input">Enter text in text input</a></li>
+          <li><a href="#text-input-2">Enter text in text input 2</a></li>
+        </ul>
+      </div>
+
+      <h1 class="heading-xlarge">
+        Big form using old GOV.UK Elements
+      </h1>
+
+      <form method="post" action="#">
+        <div class="form-group form-group-error">
+          <label class="form-label" for="text-input">
+            Text input
+            <span class="error-message">Enter text in text input</span>
+          </label>
+          <input class="form-control form-control-error" id="text-input" type="text" name="text-input">
+        </div>
+
+        <div class="form-group form-group-error">
+          <label class="form-label" for="text-input-2">
+            <span class="form-label">Text input 2</span>
+            <span class="form-hint">A hint</span>
+            <span class="error-message">Enter text in text input 2</span>
+          </label>
+          <input class="form-control form-control-error" id="text-input-2" type="text" name="text-input-2">
+        </div>
+
+        <div class="form-group form-group-error">
+          <fieldset>
+            <legend>
+              <span class="form-label-bold">
+                A date input
+              </span>
+              <span class="form-hint">For example, 12 11 2007</span>
+              <span class="error-message">Enter a date in date input</span>
+            </legend>
+            <div class="form-date">
+              <div class="form-group form-group-day">
+                <label class="form-label" for="date-day">Day</label>
+                <input class="form-control form-control-error" id="date-day" name="date-day" type="number" pattern="[0-9]*">
+              </div>
+              <div class="form-group form-group-month">
+                <label class="form-label" for="date-month">Month</label>
+                <input class="form-control form-control-error" id="date-month" name="date-month" type="number" pattern="[0-9]*">
+              </div>
+              <div class="form-group form-group-year">
+                <label class="form-label" for="date-year">Year</label>
+                <input class="form-control form-control-error" id="date-year" name="date-year" type="number" pattern="[0-9]*">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <details>
+          <summary><span class="summary">Help with date</span></summary>
+          <div class="panel panel-border-narrow">
+            The day of the month or year as specified by a number.
+          </div>
+        </details>
+
+        <div class="form-group form-group-error">
+          <label for="more-detail">
+            <span class="form-label">Can you provide more detail?</span>
+            <span class="error-message">Provide more detail</span>
+          </label>
+          <textarea class="form-control form-control-3-4 form-control-error" name="more-detail" id="more-detail" rows="5"></textarea>
+        </div>
+
+        <div class="form-group form-group-error">
+          <fieldset>
+            <legend>
+              <span class="form-label">Check boxes within a larger form</span>
+              <span class="form-hint">Select all that apply</span>
+              <span class="error-message">Select a checkbox or two</span>
+            </legend>
+            <div class="multiple-choice">
+              <input id="checkboxes-1" name="checkboxes" type="checkbox" value="one">
+              <label for="checkboxes-1">Checkbox one</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="checkboxes-2" name="checkboxes" type="checkbox" value="two">
+              <label for="checkboxes-2">Checkbox two</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="checkboxes-3" name="checkboxes" type="checkbox" value="three">
+              <label for="checkboxes-3">Checkbox three</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-group form-group-error">
+          <label class="form-label" for="sort">
+            Drop down box
+            <span class="error-message">Select something</span>
+          </label>
+          <select class="form-control form-control-error" id="sort" name="sort">
+            <option value="published">We shouldn't really be using these</option>
+            <option value="updated">Blah</option>
+            <option value="views">Bleh</option>
+            <option value="comments">Bloh</option>
+          </select>
+        </div>
+
+        <div class="form-group form-group-error">
+          <fieldset>
+
+            <legend>
+              <span class="form-label">
+                Where do you live?
+              </span>
+              <span class="error-message">Select where you live</span>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="where-do-you-live-england" type="radio" name="where-do-you-live" value="england">
+              <label for="where-do-you-live-england">England</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="where-do-you-live-scotland" type="radio" name="where-do-you-live" value="scotland">
+              <label for="where-do-you-live-scotland">Scotland</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="where-do-you-live-wales" type="radio" name="where-do-you-live" value="wales">
+              <label for="where-do-you-live-wales">Wales</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="where-do-you-live-northern-ireland" type="radio" name="where-do-you-live" value="northern-ireland">
+              <label for="where-do-you-live-northern-ireland">Northern Ireland</label>
+            </div>
+
+            <div class="multiple-choice" data-target="reveal-tell-me-where">
+              <input id="where-do-you-live-abroad" type="radio" name="where-do-you-live" value="abroad">
+              <label for="where-do-you-live-abroad">I am a British citizen living abroad (I reveal another field)</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="reveal-tell-me-where">
+              <label class="form-label" for="tell-me-where">Where?</label>
+              <input class="form-control" name="tell-me-where" type="text" id="tell-me-where">
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="button" type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
