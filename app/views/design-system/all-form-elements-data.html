@@ -1,0 +1,208 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Big form using the new GDS design system - Service name
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Big form using the new GDS design system
+      </h1>
+
+      <form method="post" action="#">
+        {{ govukInput({
+          label: {
+            text: "Text input"
+          },
+          id: "text-input",
+          name: "text-input"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Text input 2"
+          },
+          hint: {
+            text: "A hint"
+          },
+          id: "text-input-2",
+          name: "text-input-2"
+        }) }}
+
+        {{ govukDateInput({
+          namePrefix: "date",
+          fieldset: {
+            legend: {
+              text: "A date input"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2007"
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with date",
+          text: "The day of the month or year as specified by a number."
+        }) }}
+
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          label: {
+            text: "Can you provide more detail?"
+          },
+          hint: {
+            text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+          }
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "checkboxes",
+          name: "checkboxes",
+          fieldset: {
+            legend: {
+              text: "Check boxes within a larger form"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox one"
+              },
+              value: "one",
+              text: "Checkbox one"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox two"
+              },
+              value: "two",
+              text: "Checkbox two"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox three"
+              },
+              value: "three",
+              text: "Checkbox three"
+            }
+          ]
+        }) }}
+
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            text: "Drop down box"
+          },
+          items: [
+            {
+              value: "published",
+              text: "We shouldn't really be using these"
+            },
+            {
+              value: "updated",
+              text: "Blah"
+            },
+            {
+              value: "views",
+              text: "Bleh"
+            },
+            {
+              value: "comments",
+              text: "Bloh"
+            }
+          ]
+        }) }}
+
+        {% set conditionalField %}
+          {{ govukInput({
+            label: {
+              text: "Where?"
+            },
+            name: "tell-me-where"
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "where-do-you-live",
+          name: "where-do-you-live",
+          fieldset: {
+            legend: {
+              text: "Where do you live?"
+            }
+          },
+          items: [
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "England"
+              },
+              value: "england",
+              text: "England"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Scotland"
+              },
+              value: "scotland",
+              text: "Scotland"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Wales"
+              },
+              value: "wales",
+              text: "Wales"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Northern Ireland"
+              },
+              value: "northern-ireland",
+              text: "Northern Ireland"
+            },
+            {
+              divider: "or"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "I am a British citizen living abroad (I reveal another field)"
+              },
+              value: "abroad",
+              text: "I am a British citizen living abroad (I reveal another field)",
+              conditional: {
+                html: conditionalField
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

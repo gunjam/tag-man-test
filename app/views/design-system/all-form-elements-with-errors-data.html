@@ -1,0 +1,285 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Error: Big form using the new GDS design system - Service name
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Enter text in text input",
+            href: "#text-input"
+          },
+          {
+            text: "Enter text in text input 2",
+            href: "#text-input-2"
+          },
+          {
+            text: "Enter a date in date input",
+            href: "#date"
+          },
+          {
+            text: "Provide more detail",
+            href: "#more-detail"
+          },
+          {
+            text: "Select a checkbox or two",
+            href: "#checkboxes-1"
+          },
+          {
+            text: "Select something",
+            href: "#select"
+          },
+          {
+            text: "Select where you live",
+            href: "#where-do-you-live-1"
+          }
+        ]
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        Big form using the new GDS design system
+      </h1>
+
+      <form method="post" action="#">
+        {{ govukInput({
+          label: {
+            text: "Text input"
+          },
+          id: "text-input",
+          name: "text-input",
+          errorMessage: {
+            text: "Enter text in text input",
+            attributes: {
+              "data-validation": {fn: 'text-input', va: 'required'} | dump
+            }
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Text input 2"
+          },
+          hint: {
+            text: "A hint"
+          },
+          id: "text-input-2",
+          name: "text-input-2",
+          errorMessage: {
+            text: "Enter text in text input 2",
+            attributes: {
+              "data-validation": {fn: 'text-input-2', va: 'required'} | dump
+            }
+          }
+        }) }}
+
+        {{ govukDateInput({
+          namePrefix: "date",
+          id: "date",
+          fieldset: {
+            legend: {
+              text: "A date input"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2007"
+          },
+          errorMessage: {
+            text: "Enter a date in date input",
+            attributes: {
+              "data-validation": {fn: 'date', va: 'required'} | dump
+            }
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with date",
+          text: "The day of the month or year as specified by a number."
+        }) }}
+
+        {{ govukTextarea({
+          name: "more-detail",
+          id: "more-detail",
+          label: {
+            text: "Can you provide more detail?"
+          },
+          hint: {
+            text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+          },
+          errorMessage: {
+            text: "Provide more detail",
+            attributes: {
+              "data-validation": {fn: 'more-detail', va: 'required'} | dump
+            }
+          }
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "checkboxes",
+          name: "checkboxes",
+          fieldset: {
+            legend: {
+              text: "Check boxes within a larger form"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          errorMessage: {
+            text: "Select a checkbox or two",
+            attributes: {
+              "data-validation": {fn: 'checkboxes', va: 'required'} | dump
+            }
+          },
+          items: [
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox one"
+              },
+              value: "one",
+              text: "Checkbox one"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox two"
+              },
+              value: "two",
+              text: "Checkbox two"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Check boxes within a larger form",
+                "data-ga-answer": "Checkbox three"
+              },
+              value: "three",
+              text: "Checkbox three"
+            }
+          ]
+        }) }}
+
+        {{ govukSelect({
+          id: "select",
+          name: "select",
+          label: {
+            text: "Drop down box"
+          },
+          errorMessage: {
+            text: "Select something",
+            attributes: {
+              "data-validation": {fn: 'select', va: 'required'} | dump
+            }
+          },
+          items: [
+            {
+              value: "published",
+              text: "We shouldn't really be using these"
+            },
+            {
+              value: "updated",
+              text: "Blah"
+            },
+            {
+              value: "views",
+              text: "Bleh"
+            },
+            {
+              value: "comments",
+              text: "Bloh"
+            }
+          ]
+        }) }}
+
+        {% set conditionalField %}
+          {{ govukInput({
+            label: {
+              text: "Where?"
+            },
+            name: "tell-me-where"
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "where-do-you-live",
+          name: "where-do-you-live",
+          fieldset: {
+            legend: {
+              text: "Where do you live?"
+            }
+          },
+          errorMessage: {
+            text: "Select where you live",
+            attributes: {
+              "data-validation": {fn: 'where-do-you-live', va: 'required'} | dump
+            }
+          },
+          items: [
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "England"
+              },
+              value: "england",
+              text: "England"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Scotland"
+              },
+              value: "scotland",
+              text: "Scotland"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Wales"
+              },
+              value: "wales",
+              text: "Wales"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "Northern Ireland"
+              },
+              value: "northern-ireland",
+              text: "Northern Ireland"
+            },
+            {
+              divider: "or"
+            },
+            {
+              attributes: {
+                "data-ga-question": "Where do you live?",
+                "data-ga-answer": "I am a British citizen living abroad (I reveal another field)"
+              },
+              value: "abroad",
+              text: "I am a British citizen living abroad (I reveal another field)",
+              conditional: {
+                html: conditionalField
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
